@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patas Amigas · Adoção de cães e gatos</title>
+  <meta name="description" content="Adote um cão ou gato. Site feito para ser usado por todas as pessoas.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo principal</a>
+
+  <!-- Painel de acessibilidade -->
+  <aside class="a11y" aria-label="Opções de acessibilidade">
+    <button type="button" class="a11y__abrir" id="a11y-abrir" aria-expanded="false" aria-controls="a11y-painel">
+      <span aria-hidden="true">♿</span> Acessibilidade
+    </button>
+    <div id="a11y-painel" class="a11y__painel" hidden>
+      <h2>Ajustes de leitura e conforto</h2>
+      <div class="a11y__grupo" role="group" aria-label="Tamanho do texto">
+        <button type="button" data-acao="fonte-menos" aria-label="Diminuir texto">A−</button>
+        <button type="button" data-acao="fonte-reset" aria-label="Tamanho normal do texto">A</button>
+        <button type="button" data-acao="fonte-mais" aria-label="Aumentar texto">A+</button>
+      </div>
+      <ul class="a11y__lista">
+        <li><button type="button" class="alterna" data-pref="contraste" aria-pressed="false">Alto contraste</button></li>
+        <li><button type="button" class="alterna" data-pref="calmo" aria-pressed="false">Modo calmo (sem animações, cores suaves)</button></li>
+        <li><button type="button" class="alterna" data-pref="legivel" aria-pressed="false">Fonte de leitura facilitada</button></li>
+        <li><button type="button" class="alterna" data-pref="espaco" aria-pressed="false">Mais espaço entre linhas</button></li>
+        <li><button type="button" class="alterna" data-pref="links" aria-pressed="false">Destacar links</button></li>
+        <li><button type="button" class="alterna" data-pref="foco" aria-pressed="false">Foco do teclado bem grande</button></li>
+      </ul>
+      <button type="button" class="secundario" data-acao="resetar">Restaurar tudo</button>
+    </div>
+  </aside>
+
+  <header class="topo">
+    <p class="marca"><span aria-hidden="true">🐾</span> Patas Amigas</p>
+    <nav aria-label="Menu principal">
+      <ul>
+        <li><a href="#animais">Animais</a></li>
+        <li><a href="#como-adotar">Como adotar</a></li>
+        <li><a href="#formulario">Quero adotar</a></li>
+        <li><a href="#duvidas">Dúvidas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="hero__texto">
+        <h1 id="titulo">Encontre um amigo para a vida toda</h1>
+        <p>Cães e gatos esperam um lar. Aqui cada animal tem uma descrição clara, e o site funciona com teclado, leitor de tela e sem depender de imagens ou cores.</p>
+        <p><a class="botao" href="#animais">Ver animais para adoção</a></p>
+      </div>
+      <div class="hero__fotos">
+        <figure>
+          <img data-fallback="🐶" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop"
+               alt="Cachorro de pelo claro olhando para a câmera, com a língua para fora" width="400" height="300">
+          <figcaption>Cães</figcaption>
+        </figure>
+        <figure>
+          <img data-fallback="🐱" src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=300&fit=crop"
+               alt="Gato de olhos verdes olhando de frente, com pelos cinza e brancos" width="400" height="300">
+          <figcaption>Gatos</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="animais" aria-labelledby="t-animais">
+      <h2 id="t-animais">Animais para adoção</h2>
+      <fieldset class="filtro">
+        <legend>Mostrar</legend>
+        <label><input type="radio" name="especie" value="todos" checked> Todos</label>
+        <label><input type="radio" name="especie" value="cachorro"> Cães</label>
+        <label><input type="radio" name="especie" value="gato"> Gatos</label>
+      </fieldset>
+      <p id="contagem" role="status" class="contagem"></p>
+      <ul id="lista" class="cards"></ul>
+      <noscript><p class="aviso">Ative o JavaScript para ver a lista de animais. Você também pode falar com a gente pelo e-mail contato@patasamigas.example.</p></noscript>
+    </section>
+
+    <section id="como-adotar" aria-labelledby="t-como">
+      <h2 id="t-como">Como adotar</h2>
+      <ol class="passos">
+        <li><strong>Escolha um animal.</strong> Leia a descrição e veja se combina com a sua rotina.</li>
+        <li><strong>Preencha o formulário.</strong> Leva cerca de 3 minutos.</li>
+        <li><strong>Conversamos com você.</strong> Entramos em contato em até 2 dias úteis, por e-mail ou telefone.</li>
+        <li><strong>Visita e conhecimento.</strong> Você conhece o animal pessoalmente, sem pressa.</li>
+        <li><strong>Assinatura do termo e entrega.</strong> O animal vai para casa já vacinado e castrado.</li>
+      </ol>
+    </section>
+
+    <section id="formulario" aria-labelledby="t-form">
+      <h2 id="t-form">Quero adotar</h2>
+      <p>Campos com <strong>(obrigatório)</strong> precisam ser preenchidos.</p>
+
+      <div id="resumo-erros" class="resumo-erros" tabindex="-1" hidden></div>
+
+      <form id="form" novalidate>
+        <div class="campo">
+          <label for="nome">Seu nome completo (obrigatório)</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="nome-ajuda nome-erro">
+          <p id="nome-ajuda" class="ajuda">Exemplo: Maria da Silva</p>
+          <p id="nome-erro" class="erro" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail (obrigatório)</label>
+          <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-ajuda email-erro">
+          <p id="email-ajuda" class="ajuda">Exemplo: maria@email.com</p>
+          <p id="email-erro" class="erro" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="telefone">Telefone com DDD (obrigatório)</label>
+          <input id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="telefone-ajuda telefone-erro">
+          <p id="telefone-ajuda" class="ajuda">Exemplo: (41) 91234-5678</p>
+          <p id="telefone-erro" class="erro" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="pet">Qual animal você quer conhecer? (obrigatório)</label>
+          <select id="pet" name="pet" aria-describedby="pet-erro">
+            <option value="">Escolha uma opção</option>
+          </select>
+          <p id="pet-erro" class="erro" hidden></p>
+        </div>
+
+        <fieldset class="campo" aria-describedby="moradia-erro">
+          <legend>Onde você mora? (obrigatório)</legend>
+          <label class="opcao"><input type="radio" name="moradia" value="casa"> Casa</label>
+          <label class="opcao"><input type="radio" name="moradia" value="apartamento"> Apartamento</label>
+          <p id="moradia-erro" class="erro" hidden></p>
+        </fieldset>
+
+        <div class="campo">
+          <label for="motivo">Por que você quer adotar? (opcional)</label>
+          <textarea id="motivo" name="motivo" rows="4" aria-describedby="motivo-ajuda"></textarea>
+          <p id="motivo-ajuda" class="ajuda">Conte, com suas palavras, sobre a sua rotina e a sua casa.</p>
+        </div>
+
+        <button type="submit" class="botao botao--grande">Enviar pedido de adoção</button>
+      </form>
+
+      <div id="sucesso" class="sucesso" role="status" tabindex="-1" hidden></div>
+    </section>
+
+    <section id="duvidas" aria-labelledby="t-duvidas">
+      <h2 id="t-duvidas">Dúvidas frequentes</h2>
+      <details>
+        <summary>Posso adotar morando em apartamento?</summary>
+        <p>Sim. Gatos e cães pequenos ou calmos costumam se adaptar bem. Cada ficha informa o nível de energia do animal.</p>
+      </details>
+      <details>
+        <summary>Tem custo para adotar?</summary>
+        <p>Não cobramos pela adoção. O animal já vai vacinado, vermifugado e castrado.</p>
+      </details>
+      <details>
+        <summary>Como atendemos pessoas com deficiência?</summary>
+        <p>Podemos agendar a visita em horário mais tranquilo, com espaço sem barulho, e atender por texto, e-mail ou videochamada com intérprete de Libras. Avise no formulário ou por e-mail.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Patas Amigas · contato@patasamigas.example · Projeto de acessibilidade digital</p>
+    <p><a href="#titulo">Voltar ao topo</a></p>
+  </footer>
+
+  <div id="voz-aviso" class="toast" role="status" hidden></div>
+  <script src="script.js"></script>
+</body>
+</html>
